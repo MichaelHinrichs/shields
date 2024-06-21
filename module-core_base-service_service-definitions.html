@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
     <meta charset="utf-8">
-    <title>JSDoc: Source: core/service-test-runner/services-for-title.js</title>
+    <title>JSDoc: Module: core/base-service/service-definitions</title>
 
     <script src="scripts/prettify/prettify.js"> </script>
     <script src="scripts/prettify/lang-css.js"> </script>
@@ -17,51 +17,167 @@
 
 <div id="main">
 
-    <h1 class="page-title">Source: core/service-test-runner/services-for-title.js</h1>
+    <h1 class="page-title">Module: core/base-service/service-definitions</h1>
 
     
 
 
 
+
+<section>
+
+<header>
     
-    <section>
-        <article>
-            <pre class="prettyprint source linenums"><code>/**
- * @module
- */
+</header>
 
-import difference from 'lodash.difference'
+<article>
+    <div class="container-overview">
+    
+        
 
-/**
- * Given a pull request title like
- * '[Travis Sonar] Support user token authentication'
- * extract the list of service names in square brackets
- * as an array of strings.
- *
- * @param {string} title Pull Request title
- * @returns {string[]} Array of service names
- */
-function servicesForTitle(title) {
-  const bracketed = /\[([^\]]+)\]/g
+        
 
-  const preNormalized = title.toLowerCase()
 
-  let services = []
-  let match
-  while ((match = bracketed.exec(preNormalized))) {
-    const [, bracketed] = match
-    services = services.concat(bracketed.split(' '))
-  }
-  services = services.filter(Boolean).map(service => service.toLowerCase())
+<dl class="details">
 
-  const ignored = ['wip', 'rfc', 'security']
-  return difference(services, ignored)
-}
+    
 
-export default servicesForTitle
-</code></pre>
-        </article>
-    </section>
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="core_base-service_service-definitions.js.html">core/base-service/service-definitions.js</a>, <a href="core_base-service_service-definitions.js.html#line1">line 1</a>
+    </li></ul></dd>
+    
+
+    
+
+    
+
+    
+</dl>
+
+
+        
+    
+    </div>
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+        <h3 class="subsection-title">Members</h3>
+
+        
+            
+<h4 class="name" id="~openApiSchema"><span class="type-signature">(inner, constant) </span>openApiSchema<span class="type-signature"></span></h4>
+
+
+
+
+<div class="description">
+    <p>Joi schema describing the subset of OpenAPI paths we use in this application</p>
+</div>
+
+
+
+
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="core_base-service_service-definitions.js.html">core/base-service/service-definitions.js</a>, <a href="core_base-service_service-definitions.js.html#line13">line 13</a>
+    </li></ul></dd>
+    
+
+    
+
+    
+    <dt class="tag-see">See:</dt>
+    <dd class="tag-see">
+        <ul>
+            <li><a href="https://swagger.io/specification/#paths-object">https://swagger.io/specification/#paths-object</a></li>
+        </ul>
+    </dd>
+    
+
+    
+</dl>
+
+
+
+
+
+
+        
+    
+
+    
+
+    
+
+    
+</article>
+
+</section>
 
 
 

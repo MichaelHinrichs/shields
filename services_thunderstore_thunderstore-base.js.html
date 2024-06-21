@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
     <meta charset="utf-8">
-    <title>JSDoc: Source: core/service-test-runner/services-for-title.js</title>
+    <title>JSDoc: Source: services/thunderstore/thunderstore-base.js</title>
 
     <script src="scripts/prettify/prettify.js"> </script>
     <script src="scripts/prettify/lang-css.js"> </script>
@@ -17,7 +17,7 @@
 
 <div id="main">
 
-    <h1 class="page-title">Source: core/service-test-runner/services-for-title.js</h1>
+    <h1 class="page-title">Source: services/thunderstore/thunderstore-base.js</h1>
 
     
 
@@ -26,39 +26,66 @@
     
     <section>
         <article>
-            <pre class="prettyprint source linenums"><code>/**
- * @module
- */
+            <pre class="prettyprint source linenums"><code>import Joi from 'joi'
+import { BaseJsonService } from '../index.js'
+import { nonNegativeInteger } from '../validators.js'
 
-import difference from 'lodash.difference'
+const packageMetricsSchema = Joi.object({
+  downloads: nonNegativeInteger,
+  rating_score: nonNegativeInteger,
+  latest_version: Joi.string().required(),
+})
+
+const description = `
+The Thunderstore badges require a package's &lt;code>namespace&lt;/code> and &lt;code>name&lt;/code>.
+
+Everything can be discerned from your package's URL. Thunderstore package URLs have a mostly consistent format:
+
+&lt;code>https://thunderstore.io/c/[community]/p/[namespace]/[packageName]&lt;/code>
+
+For example: &lt;code>https://thunderstore.io/c/lethal-company/p/notnotnotswipez/MoreCompany/&lt;/code>.
+&lt;ul>
+  &lt;li>&lt;code>namespace = "notnotnotswipez"&lt;/code>&lt;/li>
+  &lt;li>&lt;code>packageName = "MoreCompany"&lt;/code>&lt;/li>
+&lt;/ul>
+
+:::info[Risk Of Rain 2]
+The 'default community', Risk of Rain 2, has an alternative URL:
+
+&lt;code>https://thunderstore.io/package/[namespace]/[packageName]&lt;/code>
+:::
+
+:::info[Subdomain Communities]
+Some communities use a 'subdomain' alternative URL, for example, Valheim:
+
+&lt;code>https://valheim.thunderstore.io/package/[namespace]/[packageName]&lt;/code>
+:::
+`
 
 /**
- * Given a pull request title like
- * '[Travis Sonar] Support user token authentication'
- * extract the list of service names in square brackets
- * as an array of strings.
+ * Services which query Thunderstore endpoints should extend BaseThunderstoreService
  *
- * @param {string} title Pull Request title
- * @returns {string[]} Array of service names
+ * @abstract
  */
-function servicesForTitle(title) {
-  const bracketed = /\[([^\]]+)\]/g
-
-  const preNormalized = title.toLowerCase()
-
-  let services = []
-  let match
-  while ((match = bracketed.exec(preNormalized))) {
-    const [, bracketed] = match
-    services = services.concat(bracketed.split(' '))
+class BaseThunderstoreService extends BaseJsonService {
+  static thunderstoreGreen = '23FFB0'
+  /**
+   * Fetches package metrics from the Thunderstore API.
+   *
+   * @param {object} pkg - Package specifier
+   * @param {string} pkg.namespace - the package namespace
+   * @param {string} pkg.packageName - the package name
+   * @returns {Promise&lt;object>} - Promise containing validated package metrics
+   */
+  async fetchPackageMetrics({ namespace, packageName }) {
+    return this._requestJson({
+      schema: packageMetricsSchema,
+      url: `https://thunderstore.io/api/v1/package-metrics/${namespace}/${packageName}`,
+    })
   }
-  services = services.filter(Boolean).map(service => service.toLowerCase())
-
-  const ignored = ['wip', 'rfc', 'security']
-  return difference(services, ignored)
 }
 
-export default servicesForTitle
+export { BaseThunderstoreService, description }
 </code></pre>
         </article>
     </section>
