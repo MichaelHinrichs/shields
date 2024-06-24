@@ -8,6 +8,7 @@ t.create('Watchers')
     label: 'watchers',
     message: Joi.number().integer().positive(),
     color: 'blue',
+    namedLogo: 'githubwatch',
     link: [
       'https://github.com/badges/shields',
       'https://github.com/badges/shields/watchers',
@@ -16,5 +17,6 @@ t.create('Watchers')
 
 t.create('Watchers (repo not found)').get('/badges/helmets.json').expectBadge({
   label: 'watchers',
+  namedLogo: 'githubwatch',
   message: 'repo not found',
 })
