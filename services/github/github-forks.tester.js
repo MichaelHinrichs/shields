@@ -8,6 +8,7 @@ t.create('Forks')
     label: 'forks',
     message: isMetric,
     color: 'blue',
+    namedLogo: 'githubfork',
     link: [
       'https://github.com/badges/shields/fork',
       'https://github.com/badges/shields/network',
