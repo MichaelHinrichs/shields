@@ -7,6 +7,7 @@ t.create('Stars')
   .expectBadge({
     label: 'stars',
     message: isMetric,
+    namedLogo: 'githubstar',
     link: [
       'https://github.com/badges/shields',
       'https://github.com/badges/shields/stargazers',
