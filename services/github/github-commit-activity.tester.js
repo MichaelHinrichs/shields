@@ -17,6 +17,7 @@ const authorFilterUser = 'jnullj'
 t.create('commit activity (total)').get('/t/badges/shields.json').expectBadge({
   label: 'commits',
   message: isMetric,
+  namedLogo: 'githubactivity'
 })
 
 t.create('commit activity (total) by author')
@@ -24,11 +25,13 @@ t.create('commit activity (total) by author')
   .expectBadge({
     label: `commits by ${authorFilterUser}`,
     message: isMetric,
+    namedLogo: 'githubactivity'
   })
 
 t.create('commit activity (1 year)').get('/y/eslint/eslint.json').expectBadge({
   label: 'commit activity',
   message: isMetricOverTimePeriod,
+  namedLogo: 'githubactivity'
 })
 
 t.create('commit activity (1 year) by author')
@@ -36,11 +39,13 @@ t.create('commit activity (1 year) by author')
   .expectBadge({
     label: `commit activity by ${authorFilterUser}`,
     message: isCommitActivity,
+    namedLogo: 'githubactivity'
   })
 
 t.create('commit activity (1 month)').get('/m/eslint/eslint.json').expectBadge({
   label: 'commit activity',
   message: isMetricOverTimePeriod,
+  namedLogo: 'githubactivity'
 })
 
 t.create('commit activity (1 month) by author')
@@ -48,6 +53,7 @@ t.create('commit activity (1 month) by author')
   .expectBadge({
     label: `commit activity by ${authorFilterUser}`,
     message: isCommitActivity,
+    namedLogo: 'githubactivity'
   })
 
 t.create('commit activity (4 weeks)')
@@ -55,6 +61,7 @@ t.create('commit activity (4 weeks)')
   .expectBadge({
     label: 'commit activity',
     message: isMetricOverTimePeriod,
+    namedLogo: 'githubactivity'
   })
 
 t.create('commit activity (4 weeks) by author')
@@ -62,11 +69,13 @@ t.create('commit activity (4 weeks) by author')
   .expectBadge({
     label: `commit activity by ${authorFilterUser}`,
     message: isCommitActivity,
+    namedLogo: 'githubactivity'
   })
 
 t.create('commit activity (1 week)').get('/w/eslint/eslint.json').expectBadge({
   label: 'commit activity',
   message: isCommitActivity,
+  namedLogo: 'githubactivity'
 })
 
 t.create('commit activity (1 week) by author')
@@ -74,6 +83,7 @@ t.create('commit activity (1 week) by author')
   .expectBadge({
     label: `commit activity by ${authorFilterUser}`,
     message: isCommitActivity,
+    namedLogo: 'githubactivity'
   })
 
 t.create('commit activity (custom branch)')
@@ -81,6 +91,7 @@ t.create('commit activity (custom branch)')
   .expectBadge({
     label: 'commit activity',
     message: isCommitActivity,
+    namedLogo: 'githubactivity'
   })
 
 t.create('commit activity (custom branch) by author')
@@ -88,6 +99,7 @@ t.create('commit activity (custom branch) by author')
   .expectBadge({
     label: `commit activity by ${authorFilterUser}`,
     message: isCommitActivity,
+    namedLogo: 'githubactivity'
   })
 
 t.create('commit activity (repo not found)')
