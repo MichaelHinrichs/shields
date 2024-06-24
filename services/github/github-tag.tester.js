@@ -10,23 +10,24 @@ export const t = new ServiceTester({
 
 t.create('Tag')
   .get('/v/tag/expressjs/express.json')
-  .expectBadge({ label: 'tag', message: isSemver, color: 'blue' })
+  .expectBadge({ label: 'tag', message: isSemver, color: 'blue', namedLogo: 'githubtag' })
 
 t.create('Tag (inc pre-release)')
   .get('/v/tag/expressjs/express.json?include_prereleases')
   .expectBadge({
     label: 'tag',
     message: isSemver,
+    namedLogo: 'githubtag',
     color: Joi.string().allow('blue', 'orange').required(),
   })
 
 t.create('Tag (no tags)')
   .get('/v/tag/badges/daily-tests.json')
-  .expectBadge({ label: 'tag', message: 'no tags found' })
+  .expectBadge({ label: 'tag', message: 'no tags found', namedLogo: 'githubtag' })
 
 t.create('Tag (repo not found)')
   .get('/v/tag/badges/helmets.json')
-  .expectBadge({ label: 'tag', message: 'repo not found' })
+  .expectBadge({ label: 'tag', message: 'repo not found', namedLogo: 'githubtag' })
 
 // redirects
 t.create('Tag (legacy route: tag)')
