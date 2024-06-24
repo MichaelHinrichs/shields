@@ -13,6 +13,7 @@ t.create('GitHub discussions search (valid query string)')
   .expectBadge({
     label: 'query',
     message: isMetric,
+    namedLogo: 'githubdiscussion'
   })
 
 t.create('GitHub discussions search (invalid query string)')
@@ -20,6 +21,7 @@ t.create('GitHub discussions search (invalid query string)')
   .expectBadge({
     label: 'query',
     message: 'invalid query parameter: query',
+    namedLogo: 'githubdiscussion'
   })
 
 t.create('GitHub Repo discussions search (valid query string)')
@@ -29,6 +31,7 @@ t.create('GitHub Repo discussions search (valid query string)')
   .expectBadge({
     label: 'query',
     message: isMetric,
+    namedLogo: 'githubdiscussion'
   })
 
 t.create('GitHub Repo discussions search (invalid query string)')
@@ -36,6 +39,7 @@ t.create('GitHub Repo discussions search (invalid query string)')
   .expectBadge({
     label: 'query',
     message: 'invalid query parameter: query',
+    namedLogo: 'githubdiscussion'
   })
 
 t.create('GitHub Repo discussions search (invalid repo)')
@@ -45,4 +49,5 @@ t.create('GitHub Repo discussions search (invalid repo)')
   .expectBadge({
     label: 'query',
     message: '0',
+    namedLogo: 'githubdiscussion'
   })
