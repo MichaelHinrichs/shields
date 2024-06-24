@@ -7,6 +7,7 @@ t.create('Stars (User)')
   .expectBadge({
     label: 'stars',
     message: isMetric,
+    namedLogo: 'githubstar',
     link: ['https://github.com/hemantsonu20'],
   })
 
@@ -15,6 +16,7 @@ t.create('Stars (User) with affiliations')
   .expectBadge({
     label: 'stars',
     message: isMetric,
+    namedLogo: 'githubstar',
     link: ['https://github.com/hemantsonu20'],
   })
 
@@ -23,6 +25,7 @@ t.create('Stars (User) with all affiliations')
   .expectBadge({
     label: 'stars',
     message: isMetric,
+    namedLogo: 'githubstar',
     link: ['https://github.com/chris48s'],
   })
 
@@ -31,6 +34,7 @@ t.create('Stars (User) with invalid affiliations')
   .expectBadge({
     label: 'stars',
     message: 'invalid query parameter: affiliations',
+    namedLogo: 'githubstar',
     link: [],
   })
 
@@ -39,6 +43,7 @@ t.create('Stars (User) with invalid affiliations space')
   .expectBadge({
     label: 'stars',
     message: 'invalid query parameter: affiliations',
+    namedLogo: 'githubstar',
     link: [],
   })
 
@@ -47,6 +52,7 @@ t.create('Stars (Org)')
   .expectBadge({
     label: 'stars',
     message: isMetric, // matches format 13k
+    namedLogo: 'githubstar',
     link: ['https://github.com/badges'],
   })
 
@@ -55,6 +61,7 @@ t.create('Stars (Org) Lots of repo')
   .expectBadge({
     label: 'stars',
     message: isMetric, // matches format 303k
+    namedLogo: 'githubstar',
     link: ['https://github.com/github'],
   })
 
@@ -63,5 +70,6 @@ t.create('Stars (User/Org) unknown user/org')
   .expectBadge({
     label: 'stars',
     message: 'user/org not found',
+    namedLogo: 'githubstar',
     link: [],
   })
