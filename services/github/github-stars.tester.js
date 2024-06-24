@@ -27,6 +27,7 @@ t.create('Stars (repo name with trailing spaces)')
   .expectBadge({
     label: 'stars',
     message: isMetric,
+    namedLogo: 'githubstar',
     link: [
       'https://github.com/badges/shields%20%20%20%20%20',
       'https://github.com/badges/shields%20%20%20%20%20/stargazers',
